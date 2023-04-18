@@ -2,7 +2,8 @@ let express = require("express");
 let app = express();
 
 app.get("/", function (request, response) {
-  response.send("Hello Express");
+  absolutePath = __dirname + "/views/index.html";
+  response.sendFile(absolutePath);
 });
 
 console.log("Hello World");
