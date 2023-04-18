@@ -1,7 +1,7 @@
-const dotenv = require("dotenv").config();
 let express = require("express");
 let app = express();
 
+const dotenv = require("dotenv").config();
 const messageStyle = process.env.MESSAGE_STYLE;
 
 const path = require("path");
