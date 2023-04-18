@@ -27,4 +27,15 @@ app.get("/json", function (request, response) {
   }
 });
 
+app.get(
+  "/now",
+  function (request, respsonse, next) {
+    request.time = new Date().toString();
+    next();
+  },
+  function (request, response) {
+    response.json({ time: request.time });
+  }
+);
+
 module.exports = app;
