@@ -1,18 +1,25 @@
 let express = require("express");
 let app = express();
 
+const dotenv = require("dotenv").config();
+// dotenv.config({ path: "/.env" });
+const messageStyle = process.env.MESSAGE_STYLE;
+
 const path = require("path");
 app.use("/public", express.static(path.join(__dirname, "public")));
 
 app.get("/", function (request, response) {
-  absolutePath = __dirname + "/views/index.html";
+  const absolutePath = __dirname + "/views/index.html";
   response.sendFile(absolutePath);
 });
 
 app.get("/json", function (request, response) {
-  response.json({ message: "Hello json" });
+  let greeting = "Hello json";
+  if (messageStyle === "uppercase") {
+    response.json({ message: greeting.toUpperCase() });
+  } else {
+    response.json({ message: greeting });
+  }
 });
-
-console.log("Hello World");
 
 module.exports = app;
