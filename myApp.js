@@ -39,7 +39,8 @@ app.get(
 );
 
 app.get("/:word/echo", function (request, response) {
-  response.json({ echo: request.params.word });
+  const word = request.params.word;
+  response.json({ echo: `${word}` });
 });
 
 module.exports = app;
